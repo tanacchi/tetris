@@ -1,3 +1,4 @@
+#include <iterator>
 #include <main_display.hpp>
 
 #define HEIGHT 20
@@ -12,9 +13,9 @@ void MainDisplay::show(const Pile& pile, const Tetrimino& tetrimino) const
   wclear(win_.get());
   {
     const auto& body{pile.get_body()};
-    for (auto y{0ul}, height{body.size()}; y < height; ++y)
+    for (auto y{0ul}, height{std::size(body)}; y < height; ++y)
     {
-      for (auto x{0ul}, width{body[y].size()}; x < width; ++x)
+      for (auto x{0ul}, width{std::size(body[y])}; x < width; ++x)
       {
         mvwaddch(win_.get(), y + 1, x + 1, body[y][x].to_char());
       }
@@ -22,9 +23,9 @@ void MainDisplay::show(const Pile& pile, const Tetrimino& tetrimino) const
   }
   {
     const auto& body{tetrimino.get_body()};
-    for (auto y{0ul}, height{body.size()}; y < height; ++y)
+    for (auto y{0ul}, height{std::size(body)}; y < height; ++y)
     {
-      for (auto x{0ul}, width{body[y].size()}; x < width; ++x)
+      for (auto x{0ul}, width{std::size(body[y])}; x < width; ++x)
       {
         mvwaddch(
             win_.get(), 

@@ -1,4 +1,5 @@
 #include <sstream>
+#include <iterator>
 #include <tetrimino.hpp>
 
 Tetrimino::Tetrimino() noexcept
@@ -41,11 +42,11 @@ void Tetrimino::move(Direction direction)
 
 std::vector<Tetrimino::Position::second_type> Tetrimino::get_bottoms() const noexcept
 {
-  const auto body_height{body_.size()};
-  std::vector<Tetrimino::Position::second_type> result(body_[0].size(), body_height);
+  const auto body_height{std::size(body_)};
+  std::vector<Tetrimino::Position::second_type> result(std::size(body_[0]), body_height);
   for (auto ritr{std::rbegin(body_)}, rend{std::rend(body_)}; ritr != rend; ++ritr)
   {
-    for (std::size_t x{0ul}, size{ritr->size()}; x < size; ++x)
+    for (std::size_t x{0ul}, size{std::size(*ritr)}; x < size; ++x)
     {
       if (result[x] == body_height && (*ritr)[x])
       {

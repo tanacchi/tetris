@@ -1,4 +1,5 @@
 #include <cell.hpp>
+#include <iterator>
 
 Cell::Cell(bool is_present) noexcept
   : is_present_{is_present}
