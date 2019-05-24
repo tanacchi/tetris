@@ -1,7 +1,7 @@
 #include <pile.hpp>
 
 Pile::Pile() noexcept
-  : body_{CellMatrix{std::vector<Cell>(10)}}
+  : body_{20ul, CellMatrix::value_type{10ul}}
 {
 }
 
