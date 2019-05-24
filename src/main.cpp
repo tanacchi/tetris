@@ -4,6 +4,7 @@
 #include <main_display.hpp>
 
 #include <unistd.h>  // XXX: sleep function
+#include <algorithm>  // max_element
 
 int main()
 {
@@ -25,6 +26,10 @@ int main()
   {
     disp.show(pile, tetrimino);
     sleep(1);  // XXX: Avoid to use it.
+    auto bottoms{tetrimino.get_bottoms()};
+    auto max_bottom_itr{std::max_element(std::begin(bottoms), std::end(bottoms))};
+    if ((tetrimino.get_y() + *max_bottom_itr) == 20)
+      break;
     tetrimino.move(Direction::Down);
   }
   endwin();
