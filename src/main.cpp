@@ -11,7 +11,6 @@ int main()
     {Cell(true),  Cell(true), Cell(true)},
     {Cell(false), Cell(true), Cell(false)}
   }};
-  std::cout << tetrimino.to_string() << std::endl;
 
   initscr();
   keypad(stdscr, TRUE);

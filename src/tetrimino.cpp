@@ -13,20 +13,6 @@ Tetrimino::Tetrimino(CellMatrix&& body)
 {
 }
 
-std::string Tetrimino::to_string() const noexcept
-{
-  std::stringstream ss{};
-  for (const auto row: body_)
-  {
-    for (const auto cell: row)
-    {
-      ss << ' ' << (cell ? 'X' : ' ');
-    }
-    ss << std::endl;
-  }
-  return ss.str();
-}
-
 Tetrimino::Position::first_type Tetrimino::get_x() const noexcept
 {
   return pos_.first;
