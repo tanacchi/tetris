@@ -8,6 +8,8 @@ class Cell
   public:
     explicit Cell(bool is_present = false) noexcept;
     explicit operator bool() const noexcept;
+    void activate() noexcept;
+    void kill() noexcept;
     char to_char() const noexcept;
 
   private:
