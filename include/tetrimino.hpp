@@ -21,6 +21,7 @@ class Tetrimino
     Position::second_type get_y() const noexcept;
     const CellMatrix& get_body() const;
     void move(Direction direction);
+    std::vector<Position::second_type> get_bottoms() const noexcept;
 
   private:
     CellMatrix body_;
