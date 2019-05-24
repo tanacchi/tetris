@@ -13,6 +13,7 @@ class Pile
     Pile(CellMatrix&& cells) noexcept;
     const CellMatrix& get_body() const;
     std::vector<std::size_t> get_tops() const noexcept;
+    bool is_touching_tetrimino(const Tetrimino& tetrinino) noexcept;
     void pile(const Tetrimino& tetrinino);
 
   private:

@@ -28,7 +28,7 @@ int main()
     sleep(1);  // XXX: Avoid to use it.
     auto bottoms{tetrimino.get_bottoms()};
     auto max_bottom_itr{std::max_element(std::begin(bottoms), std::end(bottoms))};
-    if ((tetrimino.get_y() + *max_bottom_itr) == 20)
+    if (pile.is_touching_tetrimino(tetrimino))
     {
       pile.pile(tetrimino);
     }
