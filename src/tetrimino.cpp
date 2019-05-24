@@ -42,14 +42,14 @@ void Tetrimino::move(Direction direction)
 std::vector<Tetrimino::Position::second_type> Tetrimino::get_bottoms() const noexcept
 {
   const auto body_height{body_.size()};
-  std::vector<Tetrimino::Position::second_type> result{body_[0].size(), body_height};
+  std::vector<Tetrimino::Position::second_type> result(body_[0].size(), body_height);
   for (auto ritr{std::rbegin(body_)}, rend{std::rend(body_)}; ritr != rend; ++ritr)
   {
     for (std::size_t x{0ul}, size{ritr->size()}; x < size; ++x)
     {
-      if (result[x] != body_height && (*ritr)[x])
+      if (result[x] == body_height && (*ritr)[x])
       {
-        result[x] = std::distance(std::begin(body_), ritr.base());
+        result[x] = std::distance(std::begin(body_), ritr.base()) - 1;
       }
     }
   }
