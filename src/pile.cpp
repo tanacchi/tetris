@@ -11,7 +11,7 @@ Pile::Pile(CellMatrix&& body) noexcept
 {
 }
 
-const CellMatrix& Pile::get_data() const
+const CellMatrix& Pile::get_body() const
 {
   return body_;
 }

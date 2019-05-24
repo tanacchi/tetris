@@ -11,7 +11,7 @@ class Pile
   public:
     Pile() noexcept;
     Pile(CellMatrix&& cells) noexcept;
-    const CellMatrix& get_data() const;
+    const CellMatrix& get_body() const;
     std::vector<std::size_t> get_tops() const noexcept;
     void pile(const Tetrimino& tetrinino);
 

@@ -11,7 +11,7 @@ void MainDisplay::show(const Pile& pile, const Tetrimino& tetrimino) const
 {
   wclear(win_.get());
   {
-    const auto& body{pile.get_data()};
+    const auto& body{pile.get_body()};
     for (auto y{0ul}, height{body.size()}; y < height; ++y)
     {
       for (auto x{0ul}, width{body[y].size()}; x < width; ++x)
