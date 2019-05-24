@@ -4,6 +4,8 @@
 #include <vector>
 #include <cell.hpp>
 
+class Tetrimino;
+
 class Pile
 {
   public:
@@ -11,6 +13,7 @@ class Pile
     Pile(CellMatrix&& cells) noexcept;
     const CellMatrix& get_data() const;
     std::vector<std::size_t> get_tops() const noexcept;
+    void pile(const Tetrimino& tetrinino);
 
   private:
     CellMatrix body_;

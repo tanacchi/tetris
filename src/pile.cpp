@@ -1,4 +1,5 @@
 #include <pile.hpp>
+#include <tetrimino.hpp>
 
 Pile::Pile() noexcept
   : body_{20ul, CellMatrix::value_type{10ul}}
@@ -30,4 +31,19 @@ std::vector<std::size_t> Pile::get_tops() const noexcept
     }
   }
   return result;
+}
+
+void Pile::pile(const Tetrimino& tetrimino)
+{
+  const auto& new_body{tetrimino.get_body()};
+  const auto& start_x{tetrimino.get_x()};
+  const auto& start_y{tetrimino.get_y()};
+  for (auto offset_y{0ul}, height{new_body.size()}; offset_y < height; ++offset_y)
+  {
+    for (auto offset_x{0ul}, width{new_body[offset_y].size()}; offset_x < width; ++offset_x)
+    {
+      if (new_body[offset_y][offset_x])
+        body_[start_y + offset_y][start_x + offset_x].activate();
+    }
+  }
 }

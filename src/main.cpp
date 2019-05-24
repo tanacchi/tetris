@@ -29,7 +29,9 @@ int main()
     auto bottoms{tetrimino.get_bottoms()};
     auto max_bottom_itr{std::max_element(std::begin(bottoms), std::end(bottoms))};
     if ((tetrimino.get_y() + *max_bottom_itr) == 20)
-      break;
+    {
+      pile.pile(tetrimino);
+    }
     tetrimino.move(Direction::Down);
   }
   endwin();
