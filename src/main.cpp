@@ -10,10 +10,7 @@
 
 int main()
 {
-  Tetrimino tetrimino{{
-    {Cell(true),  Cell(true), Cell(true)},
-    {Cell(false), Cell(true), Cell(false)}
-  }};
+  Tetrimino tetrimino{T};
 
   initscr();
   cbreak();
@@ -50,6 +47,7 @@ int main()
         tetrimino.move(Direction::Down);
     }
     periodic_tetri_motion_th.join();
+    flushinp();
 
     if (pile.is_touching_tetrimino(tetrimino))
     {
