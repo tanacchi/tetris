@@ -17,7 +17,9 @@ void MainDisplay::show(const Pile& pile, const Tetrimino& tetrimino) const
     {
       for (auto x{0ul}, width{std::size(body[y])}; x < width; ++x)
       {
-        mvwaddch(win_.get(), y + 1, x + 1, body[y][x].to_char());
+        if (!body[y][x])
+          continue;
+        mvwaddch(win_.get(), y + 1, x + 1, 'X');
       }
     }
   }
@@ -27,11 +29,9 @@ void MainDisplay::show(const Pile& pile, const Tetrimino& tetrimino) const
     {
       for (auto x{0ul}, width{std::size(body[y])}; x < width; ++x)
       {
-        mvwaddch(
-            win_.get(), 
-            y + 1 + tetrimino.get_y(), 
-            x + 1 + tetrimino.get_x(), 
-            body[y][x].to_char());
+        if (!body[y][x])
+          continue;
+        mvwaddch(win_.get(), y + 1 + tetrimino.get_y(), x + 1 + tetrimino.get_x(), 'X');
       }
     }
   }
