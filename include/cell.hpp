@@ -10,7 +10,6 @@ class Cell
     explicit operator bool() const noexcept;
     void activate() noexcept;
     void kill() noexcept;
-    char to_char() const noexcept;
 
   private:
     bool is_present_;

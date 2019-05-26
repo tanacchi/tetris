@@ -20,8 +20,3 @@ void Cell::kill() noexcept
 {
   is_present_ = false;
 }
-
-char Cell::to_char() const noexcept
-{
-  return is_present_ ? 'X' : ' ';
-}
