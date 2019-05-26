@@ -29,4 +29,38 @@ class Tetrimino
     Position pos_;
 };
 
+const Tetrimino I{{
+  {Cell(true), Cell(true), Cell(true), Cell(true)}
+}};
+
+const Tetrimino O{{
+  {Cell(true), Cell(true)},
+  {Cell(true), Cell(true)}
+}};
+
+const Tetrimino S{{
+  {Cell(false), Cell(true), Cell(true)},
+  {Cell(true),  Cell(true), Cell(false)},
+}};
+
+const Tetrimino Z{{
+  {Cell(true),  Cell(true), Cell(false)},
+  {Cell(false), Cell(true), Cell(true)},
+}};
+
+const Tetrimino J{{
+  {Cell(true), Cell(false), Cell(false)},
+  {Cell(true), Cell(true),  Cell(true)},
+}};
+
+const Tetrimino L{{
+  {Cell(false), Cell(false), Cell(true)},
+  {Cell(true),  Cell(true),  Cell(true)},
+}};
+
+const Tetrimino T{{
+  {Cell(false), Cell(true), Cell(false)},
+  {Cell(true),  Cell(true), Cell(true)},
+}};
+
 #endif  // INCLUDED_TETRIMINO_HPP
