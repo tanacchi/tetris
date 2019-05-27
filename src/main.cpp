@@ -5,9 +5,6 @@
 #include <thread>
 #include <chrono>
 
-#include <unistd.h>  // XXX: sleep function
-#include <algorithm>  // max_element
-
 int main()
 {
   Tetrimino tetrimino{T};
