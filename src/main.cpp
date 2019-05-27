@@ -16,7 +16,7 @@ int main()
   cbreak();
   keypad(stdscr, TRUE);
   nodelay(stdscr, FALSE);
-  timeout(1000);
+  timeout(200);
   noecho();
   curs_set(0);
   refresh();
@@ -29,7 +29,7 @@ int main()
     disp.show(pile, tetrimino);
     std::thread periodic_tetri_motion_th{
       [&]{
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::this_thread::sleep_for(std::chrono::milliseconds(200));
         tetrimino.move(Direction::Down);
       }
     };
