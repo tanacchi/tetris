@@ -40,8 +40,6 @@ int main()
       case KEY_RIGHT:
         tetrimino.move(Direction::Right);
         break;
-      case KEY_DOWN:
-        tetrimino.move(Direction::Down);
     }
     periodic_tetri_motion_th.join();
     flushinp();
