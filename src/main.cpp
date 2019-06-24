@@ -4,10 +4,11 @@
 #include <main_display.hpp>
 #include <thread>
 #include <chrono>
+#include <memory>
 
 int main()
 {
-  Tetrimino tetrimino{T};
+  std::unique_ptr<Tetrimino> tetrimino_ptr{std::make_unique<Tetrimino>(O)};
 
   initscr();
   cbreak();
@@ -23,11 +24,11 @@ int main()
 
   while (true)
   {
-    disp.show(pile, tetrimino);
+    disp.show(pile, *tetrimino_ptr);
     std::thread periodic_tetri_motion_th{
       [&]{
         std::this_thread::sleep_for(std::chrono::milliseconds(200));
-        tetrimino.move(Direction::Down);
+        tetrimino_ptr->move(Direction::Down);
       }
     };
 
@@ -35,18 +36,19 @@ int main()
     switch (key)
     {
       case KEY_LEFT:
-        tetrimino.move(Direction::Left);
+        tetrimino_ptr->move(Direction::Left);
         break;
       case KEY_RIGHT:
-        tetrimino.move(Direction::Right);
+        tetrimino_ptr->move(Direction::Right);
         break;
     }
     periodic_tetri_motion_th.join();
     flushinp();
 
-    if (pile.is_touching_tetrimino(tetrimino))
+    if (pile.is_touching_tetrimino(*tetrimino_ptr))
     {
-      pile.pile(tetrimino);
+      pile.pile(*tetrimino_ptr);
+      tetrimino_ptr = std::make_unique<Tetrimino>(O);
     }
   }
   endwin();
