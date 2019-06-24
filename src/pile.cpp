@@ -1,6 +1,7 @@
 #include <pile.hpp>
 #include <iterator>
 #include <tetrimino.hpp>
+#include <algorithm>
 
 Pile::Pile() noexcept
   : body_{20ul, CellMatrix::value_type{10ul}}
@@ -61,4 +62,17 @@ void Pile::pile(const Tetrimino& tetrimino)
         body_[start_y + offset_y][start_x + offset_x].activate();
     }
   }
+}
+
+std::vector<std::size_t> Pile::get_clearable_lines() const
+{
+  std::vector<std::size_t> result;
+  for (auto y{0ul}, height{std::size(body_)}; y < height; ++y)
+  {
+    if (std::all_of(std::begin(body_[y]), std::end(body_[y]), [](auto cell){ return static_cast<bool>(cell); }))
+    {
+      result.emplace_back(y);
+    }
+  }
+  return result;
 }

@@ -15,6 +15,7 @@ class Pile
     std::vector<std::size_t> get_tops() const noexcept;
     bool is_touching_tetrimino(const Tetrimino& tetrinino) noexcept;
     void pile(const Tetrimino& tetrinino);
+    std::vector<std::size_t> get_clearable_lines() const;
 
   private:
     CellMatrix body_;
